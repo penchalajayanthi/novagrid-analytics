@@ -71,7 +71,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="fixed left-64 right-0 top-0 z-40 flex h-16 items-center justify-between border-b bg-white px-6 shadow-sm">
+    <header className="fixed left-64 right-0 top-0 z-30 flex h-16 items-center justify-between border-b bg-white px-6 shadow-sm">
       {/* Left */}
       <div>
         <h1 className="text-2xl font-bold text-slate-800">
