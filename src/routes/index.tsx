@@ -20,6 +20,8 @@ import CustomersPage from "../features/customers/pages/Customers";
 import ReportsPage from "../features/reports/pages/Reports";
 import SettingsPage from "../features/settings/pages/Settings";
 
+import EmployeeProfile from "../features/employees/pages/EmployeeProfile";
+
 const AppRoutes = () => {
   return (
     <Routes>
@@ -60,6 +62,11 @@ const AppRoutes = () => {
       >
         <Route index element={<DashboardPage />} />
         <Route path="employees" element={<EmployeesPage />} />
+
+        <Route
+          path="employees/:id"
+          element={<EmployeeProfile />}
+        />
         <Route path="projects" element={<ProjectsPage />} />
         <Route path="customers" element={<CustomersPage />} />
         <Route path="reports" element={<ReportsPage />} />
