@@ -28,11 +28,45 @@ export interface Employee {
 
   joinDate: string;
 
-  salary: number;
+  // -------------------------
+  // Salary
+  // -------------------------
 
-  leaveBalance: number;
+  salary: {
+    band: string;
+    basic: number;
+    hra: number;
+    allowance: number;
+    bonus: number;
+    net: number;
 
-  skills: string[];
+    history: {
+      date: string;
+      band: string;
+      amount: number;
+    }[];
+  };
+
+  // -------------------------
+  // Leave
+  // -------------------------
+
+  leave: {
+    annual: number;
+    sick: number;
+    casual: number;
+
+    history: {
+      from: string;
+      to: string;
+      type: string;
+      status: "Approved" | "Pending" | "Rejected";
+    }[];
+  };
+
+  // -------------------------
+  // Attendance
+  // -------------------------
 
   attendance: {
     present: number;
@@ -40,10 +74,24 @@ export interface Employee {
     leave: number;
   };
 
+  // -------------------------
+  // Performance
+  // -------------------------
+
   performance: {
     q1: number;
     q2: number;
     q3: number;
     q4: number;
   };
+
+  // -------------------------
+  // Skills
+  // -------------------------
+
+  skills: {
+    name: string;
+    level: number;
+  }[];
+  
 }

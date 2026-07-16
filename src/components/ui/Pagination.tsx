@@ -14,76 +14,81 @@ const Pagination = ({
   totalItems,
   pageSize,
   onPageChange,
-  onPageSizeChange,
+  // onPageSizeChange,
 }: PaginationProps) => {
-  const startItem =
+  const start =
     totalItems === 0
       ? 0
       : (currentPage - 1) * pageSize + 1;
 
-  const endItem = Math.min(
+  const end = Math.min(
     currentPage * pageSize,
     totalItems
   );
 
+  const pages = [];
+
+  for (let i = 1; i <= totalPages; i++) {
+    pages.push(i);
+  }
+
   return (
-    <div className="mt-4 flex flex-col items-center justify-between gap-4 rounded-xl border bg-white p-4 shadow-sm md:flex-row">
-      {/* Left */}
-      <p className="text-sm text-slate-600">
+    <div className="mt-6 flex flex-col items-center justify-between gap-4 rounded-xl border bg-white px-6 py-4 shadow-sm md:flex-row">
+
+      <p className="text-sm text-slate-500">
         Showing{" "}
         <span className="font-semibold">
-          {startItem}-{endItem}
+          {start}
+        </span>{" "}
+        to{" "}
+        <span className="font-semibold">
+          {end}
         </span>{" "}
         of{" "}
         <span className="font-semibold">
           {totalItems}
         </span>{" "}
-        employees
+        results
       </p>
 
-      {/* Right */}
-      <div className="flex items-center gap-4">
-        {/* Page Size */}
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-slate-600">
-            Rows:
-          </span>
+      <div className="flex items-center gap-2">
 
-          <select
-            value={pageSize}
-            onChange={(e) =>
-              onPageSizeChange(Number(e.target.value))
-            }
-            className="rounded-lg border px-2 py-1"
-          >
-            <option value={10}>10</option>
-            <option value={25}>25</option>
-            <option value={50}>50</option>
-          </select>
-        </div>
-
-        {/* Previous */}
         <button
           disabled={currentPage === 1}
-          onClick={() => onPageChange(currentPage - 1)}
-          className="rounded-lg border px-3 py-2 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
+          onClick={() =>
+            onPageChange(currentPage - 1)
+          }
+          className="flex h-9 w-9 items-center justify-center rounded-lg border text-slate-500 hover:bg-slate-100 disabled:opacity-40"
         >
-          Previous
+          ‹
         </button>
 
-        <span className="font-medium">
-          {currentPage} / {totalPages}
-        </span>
+        {pages.map((page) => (
+          <button
+            key={page}
+            onClick={() => onPageChange(page)}
+            className={`flex h-9 w-9 items-center justify-center rounded-lg text-sm font-medium transition ${
+              currentPage === page
+                ? "bg-blue-600 text-white"
+                : "border hover:bg-slate-100"
+            }`}
+          >
+            {page}
+          </button>
+        ))}
 
-        {/* Next */}
         <button
           disabled={currentPage === totalPages}
-          onClick={() => onPageChange(currentPage + 1)}
-          className="rounded-lg border px-3 py-2 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50"
+          onClick={() =>
+            onPageChange(currentPage + 1)
+          }
+          className="flex h-9 w-9 items-center justify-center rounded-lg border text-slate-500 hover:bg-slate-100 disabled:opacity-40"
         >
-          Next
+          ›
         </button>
+
       </div>
+
     </div>
   );
 };

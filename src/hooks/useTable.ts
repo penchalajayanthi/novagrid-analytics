@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 
-interface UseTableProps<T> {
+interface UseTableProps<T extends { id: number }> {
   data: T[];
   searchKeys: (keyof T)[];
 }
 
-export const useTable = <T extends Record<string, any>>({
+export const useTable = <
+  T extends Record<string, any> & { id: number }
+>({
   data,
   searchKeys,
 }: UseTableProps<T>) => {
@@ -18,14 +20,24 @@ export const useTable = <T extends Record<string, any>>({
   >({});
 
   // Sorting
-  const [sortBy, setSortBy] = useState<keyof T | null>(null);
-  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
+  const [sortBy, setSortBy] =
+    useState<keyof T | null>(null);
+
+  const [sortOrder, setSortOrder] =
+    useState<"asc" | "desc">("asc");
 
   // Pagination
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
+  const [currentPage, setCurrentPage] =
+    useState(1);
 
-  // Reset page whenever search or filters change
+  const [pageSize, setPageSize] =
+    useState(10);
+
+  // Bulk Selection
+  const [selectedRows, setSelectedRows] =
+    useState<number[]>([]);
+
+  // Reset page
   useEffect(() => {
     setCurrentPage(1);
   }, [search, filters]);
@@ -49,7 +61,9 @@ export const useTable = <T extends Record<string, any>>({
       Object.entries(filters).every(([key, value]) => {
         if (!value) return true;
 
-        return String(item[key as keyof T]) === value;
+        return (
+          String(item[key as keyof T]) === value
+        );
       })
     );
   }, [searchedData, filters]);
@@ -70,16 +84,22 @@ export const useTable = <T extends Record<string, any>>({
 
   // Pagination
   const totalItems = sortedData.length;
-  const totalPages = Math.ceil(totalItems / pageSize);
+
+  const totalPages = Math.ceil(
+    totalItems / pageSize
+  );
 
   const paginatedData = useMemo(() => {
-    const start = (currentPage - 1) * pageSize;
-    const end = start + pageSize;
+    const start =
+      (currentPage - 1) * pageSize;
 
-    return sortedData.slice(start, end);
+    return sortedData.slice(
+      start,
+      start + pageSize
+    );
   }, [sortedData, currentPage, pageSize]);
 
-  // Sorting handler
+  // Sort
   const handleSort = (key: keyof T) => {
     if (sortBy === key) {
       setSortOrder((prev) =>
@@ -91,6 +111,63 @@ export const useTable = <T extends Record<string, any>>({
     }
   };
 
+  // Filter
+  const handleFilterChange = (
+    key: keyof T,
+    value: string
+  ) => {
+    setCurrentPage(1);
+
+    setFilters((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
+  };
+
+  // Clear Filters
+  const clearFilters = () => {
+    setSearch("");
+    setFilters({});
+    setCurrentPage(1);
+  };
+
+  // Toggle Row
+  const toggleRow = (id: number) => {
+    setSelectedRows((prev) =>
+      prev.includes(id)
+        ? prev.filter((rowId) => rowId !== id)
+        : [...prev, id]
+    );
+  };
+
+  // Toggle All (Current Page)
+  const toggleAll = () => {
+    const pageIds = paginatedData.map(
+      (item) => item.id
+    );
+
+    const allSelected = pageIds.every((id) =>
+      selectedRows.includes(id)
+    );
+
+    if (allSelected) {
+      setSelectedRows((prev) =>
+        prev.filter(
+          (id) => !pageIds.includes(id)
+        )
+      );
+    } else {
+      setSelectedRows((prev) => [
+        ...new Set([...prev, ...pageIds]),
+      ]);
+    }
+  };
+
+  // Clear Selection
+  const clearSelection = () => {
+    setSelectedRows([]);
+  };
+
   return {
     data: paginatedData,
 
@@ -99,6 +176,8 @@ export const useTable = <T extends Record<string, any>>({
 
     filters,
     setFilters,
+    handleFilterChange,
+    clearFilters,
 
     sortBy,
     sortOrder,
@@ -112,5 +191,11 @@ export const useTable = <T extends Record<string, any>>({
 
     totalItems,
     totalPages,
+
+    // Bulk Selection
+    selectedRows,
+    toggleRow,
+    toggleAll,
+    clearSelection,
   };
 };

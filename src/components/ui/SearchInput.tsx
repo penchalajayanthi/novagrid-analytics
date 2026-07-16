@@ -1,6 +1,6 @@
 import { FiSearch } from "react-icons/fi";
 
-interface SearchInputProps {
+interface Props {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
@@ -9,22 +9,43 @@ interface SearchInputProps {
 const SearchInput = ({
   value,
   onChange,
-  placeholder = "Search...",
-}: SearchInputProps) => {
+  placeholder,
+}: Props) => {
   return (
     <div className="relative w-full">
+
       <FiSearch
-        className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+        className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
         size={18}
       />
 
       <input
         type="text"
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) =>
+          onChange(e.target.value)
+        }
         placeholder={placeholder}
-        className="w-full rounded-lg border border-gray-300 bg-white py-2 pl-10 pr-4 outline-none transition focus:border-blue-500"
+        className="
+          h-11
+          w-full
+          rounded-xl
+          border
+          border-slate-200
+          bg-white
+          pl-11
+          pr-4
+          text-sm
+          text-slate-700
+          placeholder:text-slate-400
+          outline-none
+          transition
+          focus:border-blue-500
+          focus:ring-4
+          focus:ring-blue-100
+        "
       />
+
     </div>
   );
 };
