@@ -88,7 +88,7 @@ const DataTable = <T extends { id: number }>({
                   }}
                   onClick={() =>
                     column.sortable &&
-                    onSort?.(column.key)
+                    onSort?.(column.key as keyof T)
                   }
                   className={`border-b border-slate-200 px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500 ${
                     column.sortable
@@ -200,7 +200,7 @@ const DataTable = <T extends { id: number }>({
                         {column.render
                           ? column.render(row)
                           : String(
-                              row[column.key] ?? "-"
+                              row[column.key as keyof T] ?? "-"
                             )}
 
                       </td>

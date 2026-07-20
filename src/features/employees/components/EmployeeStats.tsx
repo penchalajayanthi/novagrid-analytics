@@ -15,14 +15,17 @@ const EmployeeStats = ({ employees }: Props) => {
   const inactiveEmployees =
     totalEmployees - activeEmployees;
 
-  const averageSalary = Math.round(
-    employees.reduce(
-      (sum, employee) => sum + employee.salary,
-      0
-    ) /
-      totalEmployees /
-      100000
-  );
+  const averageSalary =
+  employees.length > 0
+    ? Math.round(
+        employees.reduce(
+          (sum, employee) => sum + (employee.salary.net ?? 0),
+          0
+        ) /
+          employees.length /
+          100000
+      )
+    : 0;
 
   return (
     <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
