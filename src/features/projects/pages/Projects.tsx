@@ -106,11 +106,12 @@ const Projects = () => {
       </div>
       {/* Toolbar */}
 
-      <div className="rounded-2xl border bg-white p-5 shadow-sm">
-
+      <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
 
-          <div className="grid gap-4 md:grid-cols-3">
+          {/* Filters */}
+
+          <div className="grid flex-1 gap-3 md:grid-cols-3">
 
             <SearchInput
               value={search}
@@ -134,75 +135,75 @@ const Projects = () => {
 
           </div>
 
-          <div className="flex items-center gap-3">
+          {/* Actions */}
 
-            {/* View Toggle */}
+          <div className="flex items-center gap-2">
 
-            <div className="flex rounded-xl border overflow-hidden">
+            {/* Board / List Toggle */}
 
-              <button
-                onClick={() =>
-                  setView("board")
-                }
-                className={`p-3 ${view === "board"
-                  ? "bg-blue-600 text-white"
-                  : "bg-white"
-                  }`}
-              >
-                <FiGrid />
-              </button>
+            <div className="flex overflow-hidden rounded-xl border border-slate-200">
 
-              <button
-                onClick={() =>
-                  setView("list")
-                }
-                className={`p-3 ${view === "list"
-                  ? "bg-blue-600 text-white"
-                  : "bg-white"
-                  }`}
-              >
-                <FiList />
-              </button>
+              <Tooltip title="Board View" arrow>
+                <button
+                  onClick={() => setView("board")}
+                  className={`flex h-11 w-11 items-center justify-center transition ${view === "board"
+                    ? "bg-blue-600 text-white"
+                    : "bg-white text-slate-600 hover:bg-slate-100"
+                    }`}
+                >
+                  <FiGrid className="h-5 w-5" />
+                </button>
+              </Tooltip>
+
+              <Tooltip title="List View" arrow>
+                <button
+                  onClick={() => setView("list")}
+                  className={`flex h-11 w-11 items-center justify-center transition ${view === "list"
+                    ? "bg-blue-600 text-white"
+                    : "bg-white text-slate-600 hover:bg-slate-100"
+                    }`}
+                >
+                  <FiList className="h-5 w-5" />
+                </button>
+              </Tooltip>
 
             </div>
 
-            {/* Quick Add */}
+            {/* New Task */}
 
-           <Tooltip
-  title="Create New Task"
-  arrow
-  placement="top"
->
-  <button
-    onClick={() => {
-      setSelectedStatus("Backlog");
-      setShowQuickAdd(true);
-    }}
-    className="
-      flex
-      h-12
-      w-12
-      items-center
-      justify-center
-      rounded-xl
-      bg-blue-600
-      text-white
-      shadow-sm
-      transition
-      hover:bg-blue-700
-      hover:shadow-md
-    "
-  >
-    <FiPlus
-      className="h-6 w-6"
-    />
-  </button>
-</Tooltip>
+            <Tooltip
+              title="Create New Task"
+              arrow
+            >
+              <button
+                onClick={() => {
+                  setSelectedStatus("Backlog");
+                  setShowQuickAdd(true);
+                }}
+                className="
+            flex
+            h-11
+            w-11
+            items-center
+            justify-center
+            rounded-xl
+            bg-blue-600
+            text-white
+            shadow-sm
+            transition-all
+            duration-200
+            hover:scale-105
+            hover:bg-blue-700
+            hover:shadow-md
+          "
+              >
+                <FiPlus className="h-5 w-5" />
+              </button>
+            </Tooltip>
 
           </div>
 
         </div>
-
       </div>
 
       {/* Content */}

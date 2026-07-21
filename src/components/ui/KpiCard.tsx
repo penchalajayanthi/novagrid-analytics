@@ -6,7 +6,7 @@ import {
   Building2,
   HeartPulse,
   FolderKanban,
-  TrendingUp,
+  TrendingUp, Award,
 } from "lucide-react";
 
 interface KpiCardProps {
@@ -62,6 +62,10 @@ const KpiCard = ({
 
     progress: (
       <TrendingUp className="h-7 w-7 text-emerald-600" />
+    ),
+
+    performance: (
+      <Award className="h-7 w-7 text-violet-600" />
     ),
   };
 

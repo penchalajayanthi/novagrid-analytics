@@ -49,7 +49,7 @@ const KanbanColumn = ({
         min-w-[340px]
         flex-col
         rounded-2xl
-        border-2
+        border-2 
         ${columnColors[title]}
         bg-slate-50
         transition-all
@@ -59,7 +59,7 @@ const KanbanColumn = ({
             : ""
         }
       `}
-    >
+    > 
       {/* Header */}
 
       <div
