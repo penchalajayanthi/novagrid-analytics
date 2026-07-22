@@ -41,7 +41,32 @@ const EmployeePerformanceTable = ({
 
     return "bg-red-500";
   };
+ const getDepartmentColor = (
+  department: string
+) => {
+  switch (department) {
+    case "Engineering":
+      return "bg-blue-100 text-blue-700";
 
+    case "Sales":
+      return "bg-green-100 text-green-700";
+
+    case "Marketing":
+      return "bg-purple-100 text-purple-700";
+
+    case "Finance":
+      return "bg-yellow-100 text-yellow-700";
+
+    case "HR":
+      return "bg-pink-100 text-pink-700";
+
+    case "Operations":
+      return "bg-indigo-100 text-indigo-700";
+
+    default:
+      return "bg-slate-100 text-slate-700";
+  }
+};
   const getStatus = (
     score: number
   ) => {
@@ -108,7 +133,7 @@ const EmployeePerformanceTable = ({
 
         <table className="min-w-full">
 
-          <thead className="bg-slate-50">
+          <thead className="sticky top-0 z-10 bg-slate-50 shadow-sm">
 
             <tr>
 
@@ -174,7 +199,11 @@ const EmployeePerformanceTable = ({
                   return (
                     <tr
                       key={employee.id}
-                      className="border-b transition hover:bg-slate-50"
+                     className={`border-b transition hover:bg-blue-50 ${
+  employee.id % 2 === 0
+    ? "bg-white"
+    : "bg-slate-50/40"
+}`}
                     >
 
                       {/* Employee */}
@@ -209,9 +238,13 @@ const EmployeePerformanceTable = ({
 
                       <td className="px-6 py-5">
 
-                        <span className="rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-700">
-                          {employee.department}
-                        </span>
+                       <span
+  className={`rounded-full px-3 py-1 text-sm font-medium ${getDepartmentColor(
+    employee.department
+  )}`}
+>
+  {employee.department}
+</span>
 
                       </td>
 

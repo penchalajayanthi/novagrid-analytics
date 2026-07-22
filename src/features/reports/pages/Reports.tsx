@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 import ReportHeader from "../components/ReportHeader";
 import ReportFilters from "../components/ReportFilters";
@@ -8,7 +8,6 @@ import SalesChart from "../components/SalesChart";
 import MarketingChart from "../components/MarketingChart";
 import EmployeePerformanceTable from "../components/EmployeePerformanceTable";
 
-
 import { useReports } from "../hooks/useReports";
 
 const Reports = () => {
@@ -17,52 +16,30 @@ const Reports = () => {
     sales,
     marketing,
     employees,
-    summary,
     loading,
+
+    period,
+    setPeriod,
+
+    department,
+    setDepartment,
   } = useReports();
-
-  const [period, setPeriod] =
-    useState("This Year");
-
-  const [department, setDepartment] =
-    useState("All Departments");
 
   const [reportType, setReportType] =
     useState("All Reports");
 
-  const filteredEmployees =
-    useMemo(() => {
-      if (
-        department ===
-        "All Departments"
-      )
-        return employees;
-
-      return employees.filter(
-        (employee) =>
-          employee.department ===
-          department
-      );
-    }, [employees, department]);
-
   return (
     <div className="space-y-8">
 
-      {/* Header */}
-
-    
-<ReportHeader
-  employees={employees}
-/>
-      {/* Filters */}
+      <ReportHeader
+        employees={employees}
+      />
 
       <ReportFilters
         period={period}
         department={department}
         reportType={reportType}
-        onPeriodChange={
-          setPeriod
-        }
+        onPeriodChange={setPeriod}
         onDepartmentChange={
           setDepartment
         }
@@ -71,42 +48,58 @@ const Reports = () => {
         }
       />
 
-      {/* KPI Cards */}
-
       <ReportStats
-        summary={summary}
+        revenue={revenue}
+        sales={sales}
+        marketing={marketing}
+        employees={employees}
         loading={loading}
+        reportType={reportType}
       />
-
-      {/* Charts */}
 
       <div className="grid gap-6 xl:grid-cols-2">
 
-        <RevenueChart
-          data={revenue}
-          loading={loading}
-        />
+        {(reportType ===
+          "All Reports" ||
+          reportType ===
+          "Revenue") && (
+            <RevenueChart
+              data={revenue}
+              loading={loading}
+            />
+          )}
 
-        <SalesChart
-          data={sales}
-          loading={loading}
-        />
+        {(reportType ===
+          "All Reports" ||
+          reportType ===
+          "Sales") && (
+            <SalesChart
+              data={sales}
+              loading={loading}
+            />
+          )}
 
       </div>
 
-      <MarketingChart
-        data={marketing}
-        loading={loading}
-      />
+      {(reportType ===
+        "All Reports" ||
+        reportType ===
+        "Marketing") && (
+          <MarketingChart
+            data={marketing}
+            loading={loading}
+          />
+        )}
 
-      {/* Employee Performance */}
-
-      <EmployeePerformanceTable
-        employees={
-          filteredEmployees
-        }
-        loading={loading}
-      />
+      {(reportType ===
+        "All Reports" ||
+        reportType ===
+        "Employee Performance") && (
+          <EmployeePerformanceTable
+            employees={employees}
+            loading={loading}
+          />
+        )}
 
     </div>
   );

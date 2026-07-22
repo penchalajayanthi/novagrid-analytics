@@ -6,7 +6,7 @@ import {
 import { useState } from "react";
 
 import type { EmployeePerformance } from "../types/report.types";
-
+import { notification } from "antd";
 interface Props {
   employees: EmployeePerformance[];
 }
@@ -61,7 +61,10 @@ const ExportMenu = ({
     a.click();
 
     URL.revokeObjectURL(url);
-
+    notification.success({
+      message: "Export Successful",
+      description: "Employee report downloaded successfully.",
+    });
     setOpen(false);
   };
 
