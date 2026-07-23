@@ -18,11 +18,13 @@ import EmployeesPage from "../features/employees/pages/Employees";
 import ProjectsPage from "../features/projects/pages/Projects";
 import CustomersPage from "../features/customers/pages/Customers";
 import ReportsPage from "../features/reports/pages/Reports";
-import SettingsPage from "../features/settings/pages/Settings";
-
+import Calendar from "../features/calendar/pages/Calendar";
 import EmployeeProfile from "../features/employees/pages/EmployeeProfile";
 import CustomerProfile from "../features/customers/pages/CustomerProfile";
 import ProjectProfile from "../features/projects/pages/ProjectProfile";
+import Notifications from "../features/notifications/pages/Notifications";
+import TeamCollaboration from "../features/collaboration/pages/TeamCollaboration";
+import Settings from "../features/settings/pages/Settings";
 
 const AppRoutes = () => {
   return (
@@ -82,7 +84,24 @@ const AppRoutes = () => {
 />
 
         <Route path="reports" element={<ReportsPage />} />
-        <Route path="settings" element={<SettingsPage />} />
+         <Route
+            path="/calendar"
+            element={<Calendar />}
+          />
+       <Route
+  path="/notifications"
+  element={<Notifications />}
+/>
+
+<Route
+  path="/team"
+  element={<TeamCollaboration />}
+/>
+
+<Route
+  path="/settings"
+  element={<Settings />}
+/>
       </Route>
 
 
