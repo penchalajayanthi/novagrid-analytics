@@ -331,7 +331,7 @@ GitHub:
 https://github.com/penchalajayanthi
 
 LinkedIn:
-(Add your LinkedIn profile here)
+(https://www.linkedin.com/in/jayanthi-51739b3b7/)
 
 ---
 
