@@ -1,75 +1,346 @@
-# React + TypeScript + Vite
+# 🚀 NovaGrid Analytics
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern **Enterprise Analytics Dashboard** built with **React, TypeScript, Vite, Tailwind CSS, Zustand, Ant Design, Material UI, and Recharts**.
 
-Currently, two official plugins are available:
+NovaGrid Analytics helps organizations manage employees, projects, customers, reports, collaboration, notifications, and business insights through an intuitive and responsive dashboard.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+# 📸 Project Preview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+> Replace these images with screenshots from your project.
 
-## Expanding the ESLint configuration
+## Dashboard
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![Dashboard](./screenshots/dashboard.png)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Employee Management
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+![Employees](./screenshots/employees.png)
 
+---
+
+## Projects
+
+![Projects](./screenshots/projects.png)
+
+---
+
+## Reports
+
+![Reports](./screenshots/reports.png)
+
+---
+
+## Team Collaboration
+
+![Team Collaboration](./screenshots/collaboration.png)
+
+---
+
+## Calendar
+
+![Calendar](./screenshots/calendar.png)
+
+---
+
+## Settings
+
+![Settings](./screenshots/settings.png)
+
+---
+
+# ✨ Features
+
+## 🔐 Authentication
+
+- Login
+- Register
+- Forgot Password
+- OTP Verification
+- Reset Password
+- Protected Routes
+
+---
+
+## 📊 Dashboard
+
+- KPI Cards
+- Revenue Analytics
+- Project Status
+- Quick Actions
+- Recent Activities
+- Business Charts
+
+---
+
+## 👨‍💼 Employee Management
+
+- Employee Directory
+- Employee Profile
+- Attendance
+- Leave Management
+- Salary Information
+- Performance Tracking
+
+---
+
+## 📁 Project Management
+
+- Kanban Board
+- Project Timeline
+- Team Members
+- Tasks
+- Milestones
+
+---
+
+## 👥 Customer Management
+
+- Customer Profiles
+- Purchase History
+- Customer Notes
+- Support Details
+- Tags
+
+---
+
+## 📈 Reports
+
+- Revenue Reports
+- Sales Reports
+- Marketing Reports
+- Employee Performance
+- Export Reports
+
+---
+
+## 📅 Calendar
+
+- Month View
+- Week View
+- Event Management
+- Upcoming Events
+- Today's Schedule
+
+---
+
+## 💬 Team Collaboration
+
+- Chat System
+- Multiple Conversations
+- New Chat
+- Auto Replies
+- Shared Files
+- Online Members
+- Team Statistics
+
+---
+
+## 🔔 Notifications
+
+- Notification Center
+- Notification Filters
+- Real-time Updates
+
+---
+
+## ⚙️ Settings
+
+- Profile
+- Security
+- Notifications
+- Appearance
+- Language
+
+---
+
+## 🌙 Themes
+
+- Light Theme
+- Dark Theme
+
+---
+
+# 🛠️ Tech Stack
+
+| Technology | Usage |
+|------------|-------|
+| React | Frontend |
+| TypeScript | Type Safety |
+| Vite | Build Tool |
+| Tailwind CSS | Styling |
+| Zustand | State Management |
+| React Router | Routing |
+| Ant Design | UI Components |
+| Material UI | Tooltips & UI |
+| Recharts | Charts |
+| React Icons | Icons |
+
+---
+
+# 📁 Project Structure
+
+```text
+src
+├── app
+├── assets
+├── components
+│   ├── common
+│   ├── layout
+│   ├── tables
+│   └── ui
+│
+├── constants
+├── contexts
+├── data
+│
+├── features
+│   ├── auth
+│   ├── dashboard
+│   ├── employees
+│   ├── customers
+│   ├── projects
+│   ├── reports
+│   ├── calendar
+│   ├── notifications
+│   ├── collaboration
+│   └── settings
+│
+├── hooks
+├── layouts
+├── routes
+├── store
+└── styles
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+# 🚀 Getting Started
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Clone Repository
 
+```bash
+git clone https://github.com/penchalajayanthi/novagrid-analytics.git
 ```
+
+## Navigate into Project
+
+```bash
+cd novagrid-analytics
+```
+
+## Install Dependencies
+
+```bash
+npm install
+```
+
+## Run Development Server
+
+```bash
+npm run dev
+```
+
+---
+
+# 📦 Build
+
+```bash
+npm run build
+```
+
+---
+
+# 👀 Preview Production Build
+
+```bash
+npm run preview
+```
+
+---
+
+# 📌 Modules
+
+✅ Authentication
+
+✅ Dashboard
+
+✅ Employees
+
+✅ Customers
+
+✅ Projects
+
+✅ Reports
+
+✅ Calendar
+
+✅ Team Collaboration
+
+✅ Notifications
+
+✅ Settings
+
+---
+
+# 📊 Highlights
+
+- Responsive Design
+- Feature-based Architecture
+- Reusable Components
+- State Management using Zustand
+- Charts & Analytics
+- Team Collaboration Module
+- Protected Authentication
+- Modern UI Design
+- TypeScript Support
+
+---
+
+# 📚 Folder Architecture
+
+- Feature-based architecture
+- Reusable UI Components
+- Shared Hooks
+- Services Layer
+- Type Definitions
+- Mock Data Layer
+- State Management
+- Route Guards
+
+---
+
+# 📱 Responsive Design
+
+The application is optimized for:
+
+- 💻 Desktop
+- 💼 Laptop
+- 📱 Tablet
+
+---
+
+# 👨‍💻 Developed By
+
+**Jayanthi**
+
+GitHub:
+https://github.com/penchalajayanthi
+
+LinkedIn:
+(Add your LinkedIn profile here)
+
+---
+
+# ⭐ Repository
+
+If you found this project useful, consider giving it a ⭐ on GitHub.
+
+---
+
+# 📄 License
+
+This project was developed for learning and internship purposes.

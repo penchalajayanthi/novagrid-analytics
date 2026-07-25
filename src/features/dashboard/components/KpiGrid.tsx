@@ -7,29 +7,35 @@ interface Props {
 const KpiGrid = ({ kpis }: Props) => {
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+
       <KpiCard
         title="Revenue"
         value={kpis.revenue.value}
-        change={kpis.revenue.change}
+        subtitle="Total Revenue"
+        icon="revenue"
       />
 
       <KpiCard
         title="Employees"
         value={kpis.employees.value}
-        change={kpis.employees.change}
+        subtitle="Total Employees"
+        icon="employees"
       />
 
       <KpiCard
         title="Projects"
         value={kpis.projects.value}
-        change={kpis.projects.change}
+        subtitle="Active Projects"
+        icon="projects"
       />
 
       <KpiCard
         title="Customers"
         value={kpis.customers.value}
-        change={kpis.customers.change}
+        subtitle="Total Customers"
+        icon="customers"
       />
+
     </div>
   );
 };
