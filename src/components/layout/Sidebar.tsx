@@ -4,9 +4,9 @@ import { navigation } from "../../constants/navigation";
 const Sidebar = () => {
   return (
     <aside className="fixed left-0 top-0 flex h-screen w-64 flex-col bg-[#1B2340] text-white shadow-xl">
-      {/* Logo */}
 
-      <div className="border-b border-slate-800 px-6 py-6">
+      {/* Logo */}
+      <div className="flex-shrink-0 border-b border-slate-800 px-6 py-6">
         <h1 className="text-3xl font-extrabold tracking-wide text-blue-500">
           NovaGrid
         </h1>
@@ -17,8 +17,7 @@ const Sidebar = () => {
       </div>
 
       {/* Navigation */}
-
-      <nav className="mt-6 flex-1 px-3 overflow-y-auto">
+      <nav className="sidebar-scroll flex-1 px-3 py-6">
 
         {navigation.map((item) => {
           const Icon = item.icon;
@@ -44,8 +43,7 @@ const Sidebar = () => {
       </nav>
 
       {/* Footer */}
-
-      <div className="border-t border-slate-800 p-5">
+      <div className="flex-shrink-0 border-t border-slate-800 p-5">
         <p className="text-center text-xs text-slate-500">
           © 2026 NovaGrid Analytics
         </p>

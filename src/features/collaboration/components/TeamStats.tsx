@@ -56,7 +56,7 @@ const TeamStats = ({
         title="Files"
         value={stats.sharedFiles}
         subtitle="Shared Files"
-        icon="revenue"
+        icon="files"
       />
 
     </div>
